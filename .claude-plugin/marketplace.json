@@ -1,0 +1,52 @@
+{
+  "name": "multinex",
+  "owner": {
+    "name": "Multinex AI",
+    "email": "support@multinex.ai"
+  },
+  "metadata": {
+    "description": "Claude Code plugin for the Multinex adaptive layer: persistent MemQ memory, Shield data protection awareness, and Legion governed agent workflow modules — all over hosted MCP.",
+    "version": "1.0.0",
+    "pluginRoot": "."
+  },
+  "plugins": [
+    {
+      "name": "multinex",
+      "source": "./multinex",
+      "description": "Connect Claude Code to the full Multinex product surface. MemQ-first persistent memory with REUNION startup, Mnemosyne context hydration, root-cause journaling, reflective learning loops, team handoff retrieval, Shield protection awareness, and Legion workflow handoffs — all served over the hosted MCP endpoint at mcp.multinex.ai.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Multinex AI"
+      },
+      "homepage": "https://multinex.ai",
+      "repository": "https://github.com/multinex-ai/multinex-skills",
+      "license": "MIT",
+      "keywords": [
+        "multinex",
+        "memq",
+        "memory",
+        "mcp",
+        "mnemosyne",
+        "claude-code",
+        "reunion",
+        "episodic-memory",
+        "handoff",
+        "root-cause",
+        "shield",
+        "legion",
+        "agent-workflows"
+      ],
+      "category": "memory",
+      "tags": [
+        "hosted-mcp",
+        "oauth",
+        "journal",
+        "brain-pathways",
+        "namespace-aware",
+        "commons-candidate",
+        "data-protection",
+        "governed-workflows"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "multinex",
+  "description": "Multinex adaptive layer for Claude: persistent MemQ memory, Shield data protection awareness, and Legion governed agent workflow modules — all served over the hosted MCP endpoint at mcp.multinex.ai.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Multinex AI"
+  },
+  "homepage": "https://multinex.ai",
+  "repository": "https://github.com/multinex-ai/multinex-skills",
+  "license": "MIT",
+  "keywords": [
+    "multinex",
+    "memq",
+    "memory",
+    "mnemosyne",
+    "mcp",
+    "claude-code",
+    "reunion",
+    "handoff",
+    "root-cause",
+    "commons-candidate",
+    "shield",
+    "legion",
+    "agent-workflows"
+  ],
+  "mcpServers": "./mcpServers.json"
+}

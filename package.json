@@ -1,0 +1,51 @@
+{
+  "name": "@multinex/multinex",
+  "version": "1.0.0",
+  "description": "Multinex adaptive layer for Claude Code — MemQ persistent memory, Shield data protection awareness, and Legion governed agent workflow modules over hosted MCP.",
+  "author": "Multinex AI <support@multinex.ai>",
+  "license": "MIT",
+  "homepage": "https://multinex.ai",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/multinex-ai/multinex-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/multinex-ai/multinex-skills/issues",
+    "email": "support@multinex.ai"
+  },
+  "keywords": [
+    "multinex",
+    "memq",
+    "memory",
+    "mnemosyne",
+    "mcp",
+    "claude-code",
+    "claude-plugin",
+    "reunion",
+    "episodic-memory",
+    "handoff",
+    "root-cause",
+    "shield",
+    "legion",
+    "agent-workflows",
+    "hosted-mcp",
+    "oauth",
+    "ai-memory",
+    "persistent-memory",
+    "ai-agents"
+  ],
+  "files": [
+    ".claude-plugin/",
+    "multinex/",
+    "server.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
