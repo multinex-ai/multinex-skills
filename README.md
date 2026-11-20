@@ -14,9 +14,9 @@ Claude Code plugin and npm distribution for the **Multinex adaptive layer** —
 a single plugin that connects Claude to all Multinex products through one hosted
 MCP endpoint:
 
-- **MemQ** — persistent sovereign memory (the flagship). Episodic, semantic,
-  procedural, and checkpoint storage across all sessions. Soul Journal, Brain
-  Pathways, Mnemosyne context compression, and governed `_commons` shared knowledge.
+- **MemQ** — persistent memory for AI agents (the flagship). Saved plans,
+  decisions, and checkpoints that carry across sessions, plus governed
+  `_commons` shared knowledge.
 - **Multinex Shield** — AI data protection and compliance. PII masking, prompt
   injection detection, data classification, and audit trails for AI workloads.
 - **Legion** — governed agent workflow modules. Modular, auditable multi-agent
@@ -90,8 +90,8 @@ that Claude Code loads automatically when the plugin is active.
 
 | Skill | Trigger / Purpose |
 |-------|------------------|
-| `reunion-first` | Start every session: REUNION handshake, namespace discovery, Mnemosyne hydration |
-| `memq-operations` | Full MemQ reference: all tools, memory types, retrieval model, operating constitution |
+| `reunion-first` | Start every session: REUNION handshake, namespace discovery, context hydration |
+| `memq-operations` | MemQ operating guide: the tools, memory types, namespaces and session patterns |
 | `learning-loop` | Long-running sessions: observe, encode, replay, reinforce, consolidate |
 | `team-handoff-commons` | Cross-agent handoffs: retrieve shared context, write back root-cause records |
 | `multinex-overview` | Product routing: MemQ vs Shield vs Legion decision tree, MCP connection guide |
@@ -106,10 +106,8 @@ sets up checkpointed write-back and a session closing sequence
 
 ### memq-operations
 
-Comprehensive operating reference for MemQ: memory type taxonomy, retrieval
-scoring model (vector + graph + hot bus fusion), every tool deep-referenced,
-quota awareness, tag taxonomy, session patterns, and the full operating
-constitution.
+Operating guide for MemQ: memory types, every tool and when to use it, quota
+awareness, tag conventions, and session patterns.
 
 ### learning-loop
 
@@ -135,7 +133,7 @@ tools), and the full routing decision tree.
 ### commons-quality
 
 Enforces a consistent capture format for resolved tool/product issues so they
-form a searchable, governed grouping in the Soul Journal. Every record captures:
+form a searchable, governed grouping in the journal. Every record captures:
 tool/product used, issue, root cause, resolution, and proof. Uses
 `journal_record(type: "failure_record")` + `add_memory(memory_type: "procedural")`
 with consistent `commons-quality` tags. Optionally surfaces promotion candidates
@@ -146,13 +144,13 @@ via `commons_resonance`.
 ## MCP Registry
 
 Published as `ai.multinex/memq` (see [`server.json`](server.json)). The MCP
-Registry manifest covers OAuth discovery, pricing, and endpoint metadata.
+Registry manifest covers OAuth discovery and endpoint metadata.
 
 ---
 
 ## Signup and Docs
 
-- Free 15-day trial: `https://billing.multinex.ai/signup`
+- Create a free account: `https://billing.multinex.ai/signup`
 - Dashboard + API keys: `https://billing.multinex.ai/dashboard`
 - Product hub: `https://multinex.ai`
 - MemQ: `https://multinex.ai/memq`

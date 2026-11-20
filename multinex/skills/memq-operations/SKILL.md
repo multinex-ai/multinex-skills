@@ -3,13 +3,13 @@ name: MemQ Brain
 description: >
   Use this skill whenever Claude should operate with the MemQ hosted
   intelligence fabric. Covers persistent memory, cross-session recall,
-  the Soul Journal, Brain Pathways (associative recall, episode replay,
-  sleep consolidation, reinforcement, prediction), Mnemosyne context
-  compression, and _commons governed shared knowledge.
+  the journal, associative recall, episode replay, reflection and
+  consolidation tools, context hydration, and _commons governed shared
+  knowledge.
 
   Trigger on: "remember this", "what did we decide", "save context",
   "recall from last session", "use MemQ", "brain discover", "load context
-  from memory", "journal this", "commons search", "mnemosyne", "checkpoint",
+  from memory", "journal this", "commons search", "hydrate context", "checkpoint",
   "reflect", "consolidate", "reunion", "namespace info", any request for
   cross-session continuity, or any time the memq MCP server is connected.
 ---
@@ -18,32 +18,20 @@ description: >
 
 ---
 
-## 1. What MemQ Is (And What It Is Not)
+## 1. How MemQ Behaves (What To Rely On)
 
-MemQ is a **hosted shared-intelligence fabric**, not a vector database
-with a nicer API. The critical differences:
+MemQ is a hosted memory service. What you save is stored durably and recalled
+by relevance to the current namespace and task, not by exact key.
 
-- Every write goes to four layers simultaneously: Soul Journal (append-only
-  JSONL), vector store (semantic embeddings), graph mirror (entity/temporal
-  relationships and HOT bus), and hot stream (recency surface). There is no
-  "just store a string" path — every write is multi-layered.
-- Every read is **multi-channel fusion**: vector similarity, graph recall,
-  hot bus recency, and journal text-match are all queried in parallel, then
-  merged and ranked with bonuses. The result is not nearest-neighbour cosine
-  — it is the most contextually relevant memory for the current namespace and
-  task.
-- **Deduplication is automatic.** Before any write lands, MemQ checks the
-  content hash (exact match) and then the nearest vector neighbour against a
-  similarity threshold. Duplicates increment the reinforcement counter instead
-  of creating a new record. Claude must not call `add_memory` in a loop
-  expecting all entries to persist separately.
-- **Reflection triggers automatically.** After every N writes (configured on
-  the server, typically 25–50, optionally jitter-seeded with quantum entropy)
-  the system runs a background consolidation. Manual calls to `reflect_memory`
+- **Duplicates are handled for you.** Saving the same thing again reinforces
+  the existing memory instead of creating a copy. Do not call `add_memory` in a
+  loop expecting every entry to persist separately.
+- **Consolidation also runs on the service.** Manual calls to `reflect_memory`
   or `brain_consolidate_sleep` are additive, not redundant.
-- Namespaces are **tier-bound and identity-enforced** by the VISA/OAuth layer.
-  Claude cannot see another tenant's data and cannot write to `_commons`
-  directly through the hosted bridge.
+- **Recall combines several signals.** Treat scores as relative within one
+  result set, and verify anything important against current sources.
+- **Access follows your sign-in.** You cannot see another tenant's data and
+  cannot write to `_commons` directly through the hosted bridge.
 
 ---
 
@@ -54,14 +42,11 @@ with a nicer API. The critical differences:
 **OAuth (interactive, default):** `mcp-remote@latest` will auto-discover the
 OAuth server from the endpoint's `.well-known/oauth-protected-resource/mcp/v1`
 metadata and redirect to `https://billing.multinex.ai` for the PKCE flow.
-Complete once; the token is cached. OAuth tokens are prefixed `mnxoa_`.
+Complete once; the token is cached.
 
 **API key (CI / service accounts):**
 Set `MEMQ_API_KEY_AUTH_HEADER=Bearer <key>` in the environment.
 Get a key at `https://billing.multinex.ai/dashboard`.
-
-**Legacy VISA token:** Pass `X-Munx-Visa-Token` header for compatibility
-with older clients only.
 
 ---
 
@@ -73,8 +58,6 @@ with older clients only.
 | `BASE` | `_commons` + exactly one private namespace |
 | `VERIFIED` | `_commons` + one authenticated private namespace |
 | `TEAM` | `_commons` + team/org namespace and approved subteam scopes |
-| `INTERNAL` | Internal service access |
-| `ROOT` | Operator/sovereign runtime access |
 
 Rules that must never be violated:
 
@@ -94,7 +77,7 @@ Rules that must never be violated:
 1. reunion          — handshake, confirm protocol + auth posture + namespace
 2. namespace_info   — verify active namespace, tier, journal footprint
 3. mnemosyne_context (objective: "<current task>")
-                    — hydrate HOT/WARM/COLD/ENGINE before deep work
+                    — hydrate relevant context before deep work
 4. (optional) brain_recall_episode or brain_associate
                     — only if the task depends on a prior session or known failure
 ```
@@ -159,9 +142,9 @@ Do I need COMPRESSED context to save tokens?
   → mnemosyne_context
 
 Do I need to WRITE a decision, fact, or failure?
-  → add_memory (for vector/graph/hot retrieval)
+  → add_memory (for recallable facts)
   → save_context (for episodic/checkpoint framing with observation)
-  → journal_record (for typed Soul Journal with audit trail)
+  → journal_record (for typed, auditable journal entries)
 
 Do I need to REFLECT and consolidate at a session boundary?
   → brain_consolidate_sleep (with persist: true)

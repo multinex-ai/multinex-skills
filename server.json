@@ -13,7 +13,9 @@
       "tokenUrl": "https://billing.multinex.ai/oauth/token",
       "registrationUrl": "https://billing.multinex.ai/oauth/register",
       "discoveryUrl": "https://billing.multinex.ai/.well-known/oauth-authorization-server",
-      "scopes": ["memq.mcp"]
+      "scopes": [
+        "memq.mcp"
+      ]
     }
   ],
   "_meta": {
@@ -25,22 +27,17 @@
     "proof": "https://multinex.ai/benchmarks/memq",
     "reproducibility": "https://multinex.ai/benchmarks/memq",
     "npm": "@multinex/multinex",
-    "pricing": {
-      "hosted": "$29/seat/month (15-day free trial available)",
-      "internal": "Free for authenticated @multinex.ai users",
-      "self_hosted": "Open Source"
-    },
     "auth": {
       "type": "oauth2",
       "discoveryUrl": "https://billing.multinex.ai/.well-known/oauth-authorization-server",
-      "manualApiKeyHeader": "Authorization",
-      "manualVisaHeader": "X-Munx-Visa-Token"
+      "manualApiKeyHeader": "Authorization"
     },
-    "benchmark_scope": "Production v2.8.0 — 6 embedding profiles (memq-runtime, OpenAI, Google, Cohere), 9 live MCP capabilities, quantum-entropy reflection scheduling (ANU QRNG), 6000 writes/min and 6000 reads/min per namespace, 0.985 dedup threshold, 24-source replay fan-out, sub-second health round-trip on warm edge. Full benchmark methodology at https://multinex.ai/benchmarks/memq.",
     "products": {
       "memq": "https://multinex.ai/memq",
       "shield": "https://multinex.ai/shield",
       "legion": "https://multinex.ai/legion"
-    }
+    },
+    "pricing_url": "https://multinex.ai/memq/pricing/",
+    "benchmark_scope": "Profiles, scope and method are published at https://multinex.ai/benchmarks/memq/."
   }
 }
