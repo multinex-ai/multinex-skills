@@ -13,7 +13,7 @@
     {
       "name": "multinex",
       "source": "./multinex",
-      "description": "Connect Claude Code to the full Multinex product surface. MemQ-first persistent memory with REUNION startup, Mnemosyne context hydration, root-cause journaling, reflective learning loops, team handoff retrieval, Shield protection awareness, and Legion workflow handoffs — all served over the hosted MCP endpoint at mcp.multinex.ai.",
+      "description": "Connect Claude Code to the full Multinex product surface. MemQ-first persistent memory with REUNION startup, context hydration, root-cause journaling, reflective learning loops, team handoff retrieval, Shield protection awareness, and Legion workflow handoffs — all served over the hosted MCP endpoint at mcp.multinex.ai.",
       "version": "1.0.0",
       "author": {
         "name": "Multinex AI"
@@ -26,7 +26,6 @@
         "memq",
         "memory",
         "mcp",
-        "mnemosyne",
         "claude-code",
         "reunion",
         "episodic-memory",

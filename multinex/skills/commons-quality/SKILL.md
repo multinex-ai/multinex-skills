@@ -24,7 +24,7 @@ Resolved issues vanish unless they are deliberately journaled with enough struct
 2. Promoted to `_commons` as governed reusable knowledge
 3. Replayed during debugging to avoid repeating the same mistake
 
-This skill enforces a consistent capture shape so all commons-quality records form a coherent grouping in the Soul Journal.
+This skill enforces a consistent capture shape so all commons-quality records form a coherent grouping in the journal.
 
 ---
 

@@ -20,7 +20,7 @@ The Multinex adaptive layer connects Claude to three products through a single h
 ## Product Surface
 
 ### MemQ — Persistent Memory
-**What it does:** Sovereign episodic, semantic, procedural, and checkpoint memory for AI agents. Four-layer simultaneous storage (Soul Journal, vector store, graph mirror, hot bus). Auto-dedup, auto-reflect, cross-session recall, Mnemosyne context compression.
+**What it does:** Persistent memory for AI agents: episodic, semantic, procedural, and checkpoint memory. Automatic de-duplication and reflection, cross-session recall, and context hydration.
 
 **When to use it:**
 - Claude needs context from a previous session
@@ -69,7 +69,7 @@ The Multinex adaptive layer connects Claude to three products through a single h
 2. Use `plan_state_write` to persist step completion and handoff context
 3. Use `plan_state_checkpoint` at phase boundaries
 4. Use `reflection_handoff` to pass human-readable context to the next agent
-5. Use `journal_record (type: "checkpoint")` to capture Legion step outcomes in the Soul Journal
+5. Use `journal_record (type: "checkpoint")` to capture Legion step outcomes in the journal
 
 **Skill to invoke:** `team-handoff-commons` (for Legion handoff write-back patterns)
 

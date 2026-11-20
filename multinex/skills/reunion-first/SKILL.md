@@ -2,7 +2,7 @@
 name: MemQ Reunion First
 description: >
   Start every Claude Code session with a REUNION handshake, namespace discovery,
-  Mnemosyne hydration, and checkpointed write-back into MemQ.
+  context hydration, and checkpointed write-back into MemQ.
 
   Trigger on: any new Claude Code session where the Multinex plugin is active,
   "start session", "begin work", "reconnect to MemQ", "run reunion", or any
@@ -15,7 +15,7 @@ Session opening sequence:
 
 1. Call `reunion` first.
 2. Call `namespace_info` to confirm the active namespace, plan, and access boundary.
-3. Call `mnemosyne_context` with the current objective to hydrate HOT, WARM, COLD, and ENGINE context before deep work starts.
+3. Call `mnemosyne_context` with the current objective to hydrate relevant context before deep work starts.
 4. If the task depends on prior failures or decisions, call `brain_recall_episode` or `brain_associate`.
 
 Execution pattern:
