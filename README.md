@@ -1,3 +1,12 @@
+<div align="center">
+  <a href="https://multinex.ai">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/multinex-ai/.github/master/profile/assets/multinex-lockup-dark.svg">
+      <img src="https://raw.githubusercontent.com/multinex-ai/.github/master/profile/assets/multinex-lockup-light.svg" alt="Multinex" width="180">
+    </picture>
+  </a>
+</div>
+
 # Multinex — Claude Adaptive Layer
 
 **Multinex** is a hosted AI infrastructure platform. This package is the official
