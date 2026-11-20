@@ -1,0 +1,63 @@
+name: ci
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate manifests, skills & public hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate JSON manifests, SKILL.md frontmatter & public hygiene
+        run: |
+          node -e '
+            const fs = require("node:fs");
+            const path = require("node:path");
+            const forbidden = [
+              /\/Users\/[A-Za-z0-9._-]+\//,
+              /-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----/,
+              /Dockerfile\.munx/i
+            ];
+            let jsonCount = 0;
+            let skillCount = 0;
+            const errors = [];
+            function walk(dir) {
+              for (const entry of fs.readdirSync(dir)) {
+                if (entry === ".git" || entry === "node_modules") continue;
+                const full = path.join(dir, entry);
+                const stat = fs.statSync(full);
+                if (stat.isDirectory()) { walk(full); continue; }
+                const rel = path.relative(process.cwd(), full);
+                const text = fs.readFileSync(full, "utf8");
+                if (entry.endsWith(".json")) {
+                  try { JSON.parse(text); jsonCount++; } catch (e) { errors.push(`${rel}: invalid JSON (${e.message})`); }
+                }
+                if (entry === "SKILL.md") {
+                  skillCount++;
+                  if (!text.startsWith("---\n") || !/\nname:\s*\S+/.test(text) || !/\ndescription:\s*\S+/.test(text)) {
+                    errors.push(`${rel}: missing YAML frontmatter name/description`);
+                  }
+                }
+                for (const rx of forbidden) {
+                  if (rx.test(text)) errors.push(`${rel}: matched forbidden pattern ${rx}`);
+                }
+              }
+            }
+            walk(process.cwd());
+            if (errors.length) {
+              console.error("Validation failed:\n" + errors.join("\n"));
+              process.exit(1);
+            }
+            console.log(`Validation passed: ${jsonCount} JSON files, ${skillCount} SKILL.md files, 0 hygiene issues.`);
+          '
